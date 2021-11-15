@@ -1,0 +1,74 @@
+/*-------------------------
+    FAQ
+-------------------------*/
+.faq-area {
+    .section-heading {
+        .title {
+            font-size: 48px;
+            margin-bottom: 40px;
+            @media #{$large-mobile} {
+                font-size: 38px;
+            }
+        }
+        p {
+            width: 100%;
+        }
+    }
+}
+
+.faq-accordion {
+    .accordion-item {
+        background-color: transparent;
+        border: none;
+    }
+   
+    .accordion-button {
+        box-shadow: none;
+        font-size: var(--font-body-1);
+        color: var(--color-white);
+        font-weight: 500;
+        font-family: var(--font-primary);
+        padding: 30px 20px 30px 65px;
+        position: relative;
+        border-radius: 16px 16px 0 0 !important;
+        transition: var(--transition);
+        background-color: var(--color-primary);
+
+        &:before {
+            content: url('../media/others/circle-box.png');
+            position: absolute;
+            top: 24px;
+            left: 20px;
+            @media #{$large-mobile} {
+                top: 30px;
+            }
+        }
+        &:after {
+            content: "\f068";
+            font-family: var(--font-awesome);
+            background-image: none;
+            transform: rotate(0deg);
+            width: auto;
+            color: var(--color-white);
+            transition: var(--transition);
+            padding-left: 10px;
+        }
+        &.collapsed {
+            background-color: transparent;
+            color: var(--color-dark);
+            &:after {
+                content: "\f067";
+                color: var(--color-dark);
+            }
+        }
+    }
+    .accordion-body {
+        background-color: var(--color-white);
+        border-radius: 0 0 24px 24px;
+        padding: 30px;
+        p {
+            color: var(--color-gray-1);
+            margin-bottom: 0;
+        }
+    }
+}
