@@ -212,7 +212,6 @@
         document.documentElement.style.setProperty('--dark-primary-color', '#'+DarkenColor(primaryColor, 15));
 
     </script>
-
     @stack('footer-script')
 
 </body>

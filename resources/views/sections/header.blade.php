@@ -30,7 +30,7 @@
                             <li><a href="{{route('front.index')}}">Accueil</a></li>
                             <li><a href="{{route('front.index')}}#voiture">Ma voiture !</a></li>
                             <li><a href="{{route('front.index')}}#services">Nos Services !</a></li>
-                            <li><a href="{{route('front.index')}}">Nos Offres !</a></li>
+                            <li><a href="{{route('front.index')}}#offers">Nos Offres !</a></li>
                             <li><a href="{{route('front.index')}}#rdv">Prendre rdv !</a></li>
                             <li><a href="{{url('contact')}}">Contact</a></li>
                         </ul>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Offers;
 use App\Tax;
 use App\Deal;
 use App\DealItem;
@@ -132,7 +133,7 @@ class DealController extends Controller
      */
     public function create(CreateDeal $request)
     {
-        abort_if(!$this->user->roles()->withoutGlobalScopes()->first()->hasPermission('create_deal'), 403);
+        /*abort_if(!$this->user->roles()->withoutGlobalScopes()->first()->hasPermission('create_deal'), 403);
 
         $days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
         $locations = Location::withoutGlobalScope('company')->groupBy('name')->get();
@@ -155,9 +156,9 @@ class DealController extends Controller
 
             $deal_items_table = view('admin.deals.deal_items_edit', compact('deal_items'))->render();
             $variables = Arr::add($variables, 'deal_items_table', $deal_items_table);
-        }
-
-        return view('admin.deals.create', $variables);
+        }*/
+        $offers = Offers::find(1);
+        return view('admin.deals.create', compact('offers'));
     }
 
     /**
@@ -166,6 +167,21 @@ class DealController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function saveoffer(Request $request){
+        $offers = Offers::find(1);
+        $offers->title = $request->title;
+        $offers->discount = $request->discount;
+        $offers->endtime = $request->endtime;
+        if ($request->hasfile('image')) {
+            $image1 = $request->file('image');
+            $name = time() . 'allimages' . '.' . $image1->getClientOriginalExtension();
+            $destinationPath = 'allimages/';
+            $image1->move($destinationPath, $name);
+            $offers->image = 'allimages/' . $name;
+        }
+        $offers->update();
+        return  redirect()->back();
+    }
     public function store(StoreRequest $request)
     {
         abort_if(!$this->user->roles()->withoutGlobalScopes()->first()->hasPermission('create_deal'), 403);

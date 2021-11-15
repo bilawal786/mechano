@@ -1,7 +1,5 @@
 @extends('layouts.frontn')
 
-
-
 @section('content')
 <!--=====================================-->
 <!--=        Banner Area Start         =-->
@@ -215,11 +213,64 @@
         </div>
     </div>
 </section>
+<section class="section section-padding pb--70" id="offers" style="background-color: blue; color: white !important; border-radius: 50px">
+    <div class="container">
+        <div class="section-heading heading-left">
+            <span class="subtitle"></span>
+            <h2 class="title" style="color: white">Nos Offres</h2>
+        </div>
+        <div class="row pb-20">
+            <div class="col-md-4">
+                <img class="w100 pb-20" src="{{$offers->image}}" alt="">
+            </div>
+            <div class="col-md-8" style="text-align: center">
+                <h3 style="color: white">{{$offers->title}}</h3><br>
+                <h3 style="color: white">-{{$offers->discount}}%</h3><br>
+                    <div class="countdown-wrap pb-20">
+                        <p style="text-align: center;
+  font-size: 60px;
+  margin-top: 0px;" id="demotime"></p>
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 @endsection
 
 @push('footer-script')
+    <script>
+        // Set the date we're counting down to
+
+        var countDownDate = new Date("{{$offers->endtime->format('M d, Y H:m')}}").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Output the result in an element with id="demo"
+            document.getElementById("demotime").innerHTML = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s ";
+
+            // If the count down is over, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demotime").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
     <script>

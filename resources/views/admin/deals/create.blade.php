@@ -47,221 +47,46 @@
         <div class="col-md-12">
             <div class="card card-dark">
                 <div class="card-header">
-                    <h3 class="card-title">@lang('app.add') @lang('menu.deal')</h3>
+                    <h3 class="card-title">Ajouter une offre</h3>
                 </div>
                 <div class="card-body">
-                    <form role="form" id="createForm"  class="ajax-form" method="POST">
+                    <form action="{{route('offer.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('app.title') </label>
-                                    <input type="text" class="form-control" name="title" id="title" value="{{ !empty($deal) ? $deal->title:'' }}" autocomplete="off">
+                                    <label>Titre </label>
+                                    <input type="text" class="form-control" name="title" value="{{$offers->title}}" id="title"  autocomplete="off">
                                 </div>
                             </div>
-
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('app.slug') </label>
-                                    <input type="text" class="form-control" name="slug" id="slug" value="{{ !empty($deal) ? $deal->slug.'-1':'' }}" autocomplete="off">
+                                    <label>Image </label>
+                                    <input type="file" class="form-control" name="image"  autocomplete="off">
                                 </div>
                             </div>
-
-                            <div class="col-md-2">
-                                <div class="form-group">
-                                    <label>@lang('app.applyDealOn')</label>
-                                    <select name="choice" id="choice" class="form-control form-control-lg select2" style="width: 100%">
-                                        <option value="service">@lang('app.service')</option>
-                                        <option value="location">@lang('app.location')</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4" id="service_div">
-                                <div class="form-group">
-                                    <label>@lang('app.service')</label>
-                                    <select name="services[]" id="services" class="form-control form-control-lg select2" multiple="multiple" style="width: 100%">
-                                        <option value="">@lang('app.selectServices')</option>
-                                        @foreach($services as $service)
-                                            <option {{ !empty($deal_services) && in_array($service->id, $deal_services) ? 'selected' :'' }} value="{{ $service->name }}">{{ $service->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4" id="location_div">
-                                <div class="form-group">
-                                    <label>@lang('app.location')</label>
-                                    <select name="locations" id="locations" class="form-control form-control-lg select2" style="width: 100%">
-                                        <option value="">@lang('app.selectLocation')</option>
-                                        @foreach($locations as $location)
-                                            <option {{ !empty($deal) && $deal->location->id == $location->id ? 'selected' :'' }} value="{{ $location->name }}">{{ $location->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-
-
-                            <div class="col-md-2" style="margin-top: 2em">
-                                <button type="button" class="btn btn-default" id="make_deal">
-                                    <i class="fa fa-plus"></i>  @lang('app.makeDeal')
-                                </button>
-                                <button id="reset-btn" type="button" class="btn btn-default">
-                                    <i class="fa fa-refresh"></i>  @lang('app.reset')
-                                </button>
-                            </div>
-
-                            <div class="offset-md-1 col-md-10 offset-md-1">
-                                <div class="table table-responsive" id="result_div">
-                                    @if (!empty($deal_items_table))
-                                    {!! $deal_items_table !!}
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="container-fluid row Deal-form" @if(empty($deal)) style="display: none" @endif>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="name">@lang('app.discount') @lang('app.type')</label>
-                                    <select name="discount_type" id="discount_type" class="form-control">
-                                        <option @if (!empty($deal) && $deal->discount_type=='percentage') selected @endif value="percentage"> @lang('app.percentage') </option>
-                                        <option @if (!empty($deal) && $deal->discount_type!='percentage') selected @endif value="{{ $settings->currency->currency_name }}"> {{ $settings->currency->currency_name }} </option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label>@lang('app.discount') @lang('app.percentage')</label>
-                                    <input onkeypress="return isNumberKey(event)" type="number" class="form-control checkAmount" name="discount" id="discount" value="{{ !empty($deal) ? $deal->percentage:'0' }}" min="0">
-                                </div>
-                            </div>
-
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('app.dealPrice')</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">{{$settings->currency->currency_symbol}}</span>
-                                        </div>
-                                        <input onkeypress="return isNumberKey(event)" readonly type="number" class="form-control checkAmount" name="discount_amount" id="discount_amount" value="{{ !empty($deal) ? $deal->deal_amount:'0' }}" min="0">
-                                        <input type="hidden" class="form-control" name="original_amt" id="original_amt" value="0">
-                                    </div>
+                                    <label>Remise % </label>
+                                    <input type="number" class="form-control" name="discount" value="{{$offers->discount}}"  autocomplete="off">
                                 </div>
                             </div>
-
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label>@lang('app.dealLimit')</label>
-                                    <input type="number" class="form-control" name="uses_time" min="0" value="{{ !empty($deal) ? $deal->uses_limit:'' }}" onkeypress="return isNumberKey(event)">
-                                    <span class="help-block">@lang('messages.dealLimit')</span>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label>@lang('app.customerUseLimit')</label>
-                                    <input onkeypress="return isNumberKey(event)" type="number" class="form-control" name="customer_uses_time" value="{{ !empty($deal) ? $deal->max_order_per_customer:'1' }}" min="0">
-                                    <span class="help-block">@lang('messages.howManyTimeCustomerCanUse')</span>
-                                </div>
-                            </div>
-
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="name">@lang('app.status')</label>
-                                    <select name="status" class="form-control">
-                                        <option value="active"> @lang('app.active') </option>
-                                        <option value="inactive"> @lang('app.inactive') </option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            @if (!is_null($taxes))
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>@lang('app.select') @lang('app.tax')</label>
-                                        <select name="tax_ids[]" id="tax_ids" class="form-control form-control-lg select2" style="width: 100% !important;" multiple="multiple">
-                                            <option value="">@lang('app.select') @lang('app.tax')</option>
-                                            @foreach($taxes as $tax)
-                                                <option value="{{ $tax->id }}">{{ $tax->tax_name }} {{ $tax->percent }}%</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                            @endif
-
-                            <div class="col-md-6">
-                                <!-- text input -->
-                                <div class="form-group">
-                                    <label>@lang('app.appliedBetweenDateTime')</label>
-                                    <input type="text" class="form-control" id="daterange" name="applied_between_dates" autocomplete="off">
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <!-- text input -->
-                                <div class="form-group">
-                                    <label>@lang('modules.settings.openTime')</label>
-                                    <input type="text" class="form-control" id="open_time" name="open_time" autocomplete="off" value="{{ !empty($deal) ? $deal->open_time:'' }}">
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <!-- text input -->
-                                <div class="form-group">
-                                    <label>@lang('modules.settings.closeTime')</label>
-                                    <input type="text" class="form-control" id="close_time"  name="close_time" autocomplete="off" value="{{ !empty($deal) ? $deal->close_time:'' }}">
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label style="">@lang('app.dayForApply') </label>
-                                <div class="row" style="margin-top: 5px">
-                                    @forelse($days as $day)
-                                        <div class="form-group" style="margin-left: 1em">
-                                            <label class="">
-                                                <div class="icheckbox_flat-green" aria-checked="false" aria-disabled="false" style="position: relative; margin-right: 5px;">
-                                                    <input type="checkbox" {{!empty($selectedDays)?(in_array($day, $selectedDays)?'checked':''):'checked'}} value="{{$day}}" name="days[]" class="flat-red columnCheck"  style="position: absolute; opacity: 0; margin-left: 15px;">
-                                                    <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
-                                                </div>
-                                                @lang('app.'. strtolower($day))
-                                            </label>
-                                        </div>
-                                    @empty
-                                    @endforelse
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="name">@lang('app.description')</label>
-                                    <textarea name="description" id="description" cols="30" class="form-control-lg form-control" rows="4">{{ !empty($deal) ? $deal->description:'' }}</textarea>
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">@lang('app.image')</label>
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <input type="file" id="input-file-now" name="feature_image" accept=".png,.jpg,.jpeg" data-default-file="{{ asset('img/no-image.jpg')  }}" class="dropify"
-                                            />
-                                        </div>
-                                    </div>
+                                    <label>Date de fin </label>
+                                    <input type="datetime-local" class="form-control" name="endtime" value="{{$offers->endtime}}"  autocomplete="off">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <button type="button" id="save-form" class="btn btn-success btn-light-round">
-                                    <i class="fa fa-check"></i> @lang('app.save')
+                                <button type="submit" class="btn btn-success btn-light-round">
+                                    <i class="fa fa-check"></i> Sauvegarder
                                 </button>
                             </div>
                         </div>
-                        </div>
-                        <input type="hidden" name="deal_startDate" id="deal_startDate">
-                        <input type="hidden" name="deal_endDate" id="deal_endDate">
-                        <input type="hidden" name="deal_startTime" id="deal_startTime" value="{{ !empty($deal) ? \Carbon\Carbon::parse($deal->open_time)->format('h:i A') :''}}">
-                        <input type="hidden" name="deal_endTime" id="deal_endTime" value="{{ !empty($deal) ? \Carbon\Carbon::parse($deal->close_time)->format('h:i A') :''}}">
-                    </form>
+                </form>
+
+
                 </div>
                 <!-- /.card-body -->
             </div>

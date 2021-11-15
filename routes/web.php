@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 // Social Auth
 Route::get('/redirect/{provider}', ['uses' => 'Auth\LoginController@redirect', 'as' => 'social.login']);
 Route::get('/callback/{provider}', ['uses' => 'Auth\LoginController@callback', 'as' => 'social.login-callback']);
+Route::post('offer.store', 'Admin\DealController@saveoffer')->name('offer.store');
 
 Auth::routes();
 

@@ -89,13 +89,13 @@
 
         @if ($user->roles()->withoutGlobalScopes()->first()->hasPermission('create_deal') || $user->roles()->withoutGlobalScopes()->first()->hasPermission('read_deal'))
         <li class="nav-item">
-            <a href="{{ route('admin.deals.index') }}" class="nav-link {{ request()->is('account/deals*') ? 'active' : '' }}">
+            <a href="{{ route('admin.deals.create') }}" class="nav-link {{ request()->is('account/deals*') ? 'active' : '' }}">
                 <i class="nav-icon fa fa-handshake-o"></i>
                 {{-- <i class="fa fa-tag"></i> --}}
                 {{-- <i class="nav-icon fa fa-gift" aria-hidden="true"></i> --}}
                 {{-- <img class="nav-icon" src="{{ asset('img/deal.png') }}" alt=""> --}}
                 <p>
-                    @lang('menu.deals')
+                    Offres
                 </p>
             </a>
         </li>
