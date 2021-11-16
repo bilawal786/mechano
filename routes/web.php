@@ -21,6 +21,7 @@ Route::get('single/product/{id}', 'ContentController@singleProduct')->name('sing
 Route::get('mycar/add', 'ContentController@addmycar')->name('mycar.add');
 Route::post('store/car', 'ContentController@carstore')->name('car.store');
 Route::post('store/content', 'ContentController@contentStore')->name('content.store');
+Route::post('customer/save', 'ContentController@customerSave')->name('customer.save');
 
 Auth::routes();
 

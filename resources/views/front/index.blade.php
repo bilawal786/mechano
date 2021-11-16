@@ -251,14 +251,14 @@
     </div>
 </section>
 <section class="section section-padding pb--70" id="offers" >
-    <div class="container" style="background-color: blue; color: white !important; border-radius: 50px; padding: 0px 50px">
+    <div class="container" style="background-color: #228fba; color: white !important; border-radius: 50px; padding: 0px 50px">
         <div class="section-heading heading-left">
             <span class="subtitle"></span>
             <h2 class="title" style="color: white">Nos Offres</h2>
         </div>
         <div class="row pb-20">
             <div class="col-md-4">
-                <img class="w100 pb-20" src="{{$offers->image}}" alt="">
+                <a href="{{$offers->link}}"><img class="w100 pb-20" src="{{$offers->image}}" alt=""></a>
             </div>
             <div class="col-md-8" style="text-align: center">
                 <h3 style="color: white">{{$offers->title}}</h3><br>

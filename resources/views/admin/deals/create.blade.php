@@ -56,25 +56,31 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Titre </label>
-                                    <input type="text" class="form-control" name="title" value="{{$offers->title}}" id="title"  autocomplete="off">
+                                    <input type="text" class="form-control" name="title" value="{{$offers->title}}" id="title" required  autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Image </label>
-                                    <input type="file" class="form-control" name="image"  autocomplete="off">
+                                    <input type="file" class="form-control" name="image"   autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Remise % </label>
-                                    <input type="number" class="form-control" name="discount" value="{{$offers->discount}}"  autocomplete="off">
+                                    <input type="number" class="form-control" name="discount" value="{{$offers->discount}}" required  autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Date de fin </label>
-                                    <input type="datetime-local" class="form-control" name="endtime" value="{{$offers->endtime}}"  autocomplete="off">
+                                    <input type="datetime-local" class="form-control" name="endtime"  autocomplete="off" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Offre Lien  </label>
+                                    <input type="text" class="form-control" name="link" value="{{$offers->link}}" required autocomplete="off">
                                 </div>
                             </div>
 

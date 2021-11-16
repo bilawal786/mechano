@@ -11,6 +11,11 @@
                                 <input class="form-control form-control-lg" type="text" id="customer-search" placeholder="@lang('modules.customer.search')">
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <a href="{{route('admin.customers.create')}}"> <button class="btn btn-success">Ajouter un nouveau</button></a>
+                            </div>
+                        </div>
 
                     </div>
                 </div>

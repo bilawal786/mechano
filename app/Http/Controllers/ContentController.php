@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Car;
 use App\Content;
+use App\Helper\Reply;
+use App\Notifications\NewUser;
 use App\Product;
+use App\Role;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -66,5 +70,19 @@ class ContentController extends Controller
         $content->h28 = $request->h28;
         $content->update();
         return redirect()->back();
+    }
+    public function customerSave(Request $request){
+        $user = new User();
+        $user->name = $request->name;
+            $user->email = $request->email;
+        $user->calling_code = $request->calling_code;
+        $user->mobile = $request->mobile;
+        $user->password = $request->password;
+        $user->save();
+        // add customer role
+        $user->attachRole(Role::where('name', 'customer')->withoutGlobalScopes()->first()->id);
+
+
+       return redirect()->route('admin.customers.index');
     }
 }

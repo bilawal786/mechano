@@ -171,7 +171,10 @@ class DealController extends Controller
         $offers = Offers::find(1);
         $offers->title = $request->title;
         $offers->discount = $request->discount;
-        $offers->endtime = $request->endtime;
+        $offers->link = $request->link;
+        if ($offers->endtime){
+            $offers->endtime = $request->endtime;
+        }
         if ($request->hasfile('image')) {
             $image1 = $request->file('image');
             $name = time() . 'allimages' . '.' . $image1->getClientOriginalExtension();
