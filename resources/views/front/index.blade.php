@@ -31,8 +31,8 @@
 <section class="section section-padding">
     <div class="container">
         <div class="section-heading heading-left">
-            <span class="subtitle">Un mécanicien avec les solutions qu'ils vous faut</span>
-            <h2 class="title">Bichonner votre voiture en toutes simplicité</h2>
+            <span class="subtitle">{{$content->h1}}</span>
+            <h2 class="title">{{$content->h2}}</h2>
         </div>
         <div class="row">
             <div class="col-lg-4 col-md-6" data-sal="slide-up" data-sal-duration="800" data-sal-delay="100">
@@ -41,8 +41,8 @@
                         <h3 class="sl-number">1</h3>
                     </div>
                     <div class="content">
-                        <h5 class="title"> Décrivez la prestation souhaité</h5>
-                        <p>Révision, remplacement, organes de freinage, remplacement pneumatiques, amortisseurs</p>
+                        <h5 class="title"> {{$content->h3}}</h5>
+                        <p>{{$content->h4}}</p>
                     </div>
                 </div>
             </div>
@@ -52,8 +52,8 @@
                         <h3 class="sl-number">2</h3>
                     </div>
                     <div class="content">
-                        <h5 class="title"> Renseigner vos disponibilités</h5>
-                        <p>On vous propose un rendez vous au plus vite, sur vos crénaux renseigné.</p><br>
+                        <h5 class="title"> {{$content->h5}}</h5>
+                        <p>{{$content->h6}}</p><br>
                     </div>
                 </div>
             </div>
@@ -63,8 +63,8 @@
                         <h3 class="sl-number">3</h3>
                     </div>
                     <div class="content">
-                        <h5 class="title"> On s'occupe de tout</h5>
-                        <p>Votre mécanicien vous retrouve chez vous ou sur votre lieu de travail</p><br>
+                        <h5 class="title"> {{$content->h7}}</h5>
+                        <p>{{$content->h8}}</p><br>
                     </div>
                 </div>
             </div>
@@ -77,15 +77,15 @@
 <section class="section section-padding bg-color-light pb--70">
     <div class="container">
         <div class="section-heading mb--90">
-            <h2 class="title">Aucune surpise, une fois le devis validée sans frais caché</h2>
+            <h2 class="title">{{$content->h9}}</h2>
         </div>
         <div class="process-work" data-sal="slide-right" data-sal-duration="1000" data-sal-delay="100">
             <div class="thumbnail paralax-image">
                 <img src="assets-new/media/technician-change-oil-in-the-car-engine-2021-08-26-16-26-20-utc-min.jpg" alt="Thumbnail">
             </div>
             <div class="content">
-                <h3 class="title">VOYANT REVISION ?</h3>
-                <p>Vidange avec remplacement filtre à huile et points de contrôle à partir de 70€</p>
+                <h3 class="title">{{$content->h10}}</h3>
+                <p>{{$content->h11}}</p>
             </div>
         </div>
         <div class="process-work content-reverse" data-sal="slide-left" data-sal-duration="1000" data-sal-delay="100">
@@ -93,8 +93,8 @@
                 <img src="assets-new/media/cropped-view-of-mechanic-adjusting-assembled-disc-2021-08-30-19-16-11-utc-min.jpg" alt="Thumbnail">
             </div>
             <div class="content">
-                <h3 class="title">FREIN USÉ ?</h3>
-                <p>Remplacement disques et plaquettes de frein</p>
+                <h3 class="title">{{$content->h12}}</h3>
+                <p>{{$content->h13}}</p>
             </div>
         </div>
         <div class="process-work" data-sal="slide-right" data-sal-duration="1000" data-sal-delay="100">
@@ -102,8 +102,8 @@
                 <img src="assets-new/media/car-suspension-shock-absorber-and-coil-spring-rep-2021-08-31-07-45-45-utc-min.jpg" alt="Thumbnail">
             </div>
             <div class="content">
-                <h3 class="title">AMORTISSEUR DÉFAILLANT ?</h3>
-                <p>Remplacement des amortisseurs</p>
+                <h3 class="title">{{$content->h14}}</h3>
+                <p>{{$content->h15}}</p>
             </div>
         </div>
         <div class="process-work content-reverse" data-sal="slide-left" data-sal-duration="1000" data-sal-delay="100">
@@ -111,8 +111,8 @@
                 <img src="assets-new/media/industrial-landfill-for-the-processing-of-waste-ti-2021-09-02-00-27-36-utc-min.jpg" alt="Thumbnail">
             </div>
             <div class="content">
-                <h3 class="title">PNEUMATIQUES USÉE OU CREVÉ ?</h3>
-                <p>Remplacement et réparation des pneumatiques</p>
+                <h3 class="title">{{$content->h16}}</h3>
+                <p>{{$content->h17}}</p>
             </div>
         </div>
     </div>
@@ -137,15 +137,52 @@
                 <li class="shape shape-2"><img src="assets-new/media/others/bubble-2.png" alt="Line"></li>
                 <li class="shape shape-3"><img src="assets-new/media/others/bubble-1.png" alt="Line"></li>
             </ul>
-        </section>
+</section>
+<section class="section project-column-4">
+            <div class="container">
+                <div id="all_services"><div class="section-heading heading-left">
+                        <h2 class="title">Des produits</h2>
+                    </div>
+                    <div  class="row">
+                        @foreach($products as $product)
+                        <div class="col-xl-3 col-lg-4 col-md-6 service-category-1" style="">
+                            <div class="project-grid">
+                                <div class="thumbnail">
+                                    <a href="">
+                                        <img src="{{asset('user-uploads/product/1/'.$product->default_image)}}" alt="project">
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h5 class="title"><a href="{{route('single.product', ['id' => $product->id])}}">{{$product->name}}</a></h5>
+                                    <span class="subtitle">Prix: {{$product->price}}€</span>
+                                    <div class="dropdown add-items">
+                                        <a id="service1" href="javascript:;" class="btn-custom btn-blue add-to-cart" data-type="product" data-unique-id="{{$product->id}}" data-id="{{$product->id}}" data-price="{{$product->price}}" data-name="{{$product->name}}" aria-expanded="false">
+                                            Ajouter au panier
+                                            <span class="fa fa-plus"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+
+                    </div>
+                </div>
+            </div>
+            <ul class="shape-group-7 list-unstyled">
+                <li class="shape shape-1"></li>
+                <li class="shape shape-2"><img src="assets-new/media/others/bubble-2.png" alt="Line"></li>
+                <li class="shape shape-3"><img src="assets-new/media/others/bubble-1.png" alt="Line"></li>
+            </ul>
+</section>
 <!--=====================================-->
 <!--=       Service  Area Start        =-->
 <!--=====================================-->
 <section class="section section-padding pb--70">
     <div class="container">
         <div class="section-heading heading-left">
-            <span class="subtitle">Un mécanicien avec vous partout</span>
-            <h2 class="title">On prend soin de vous et de votre voiture</h2>
+            <span class="subtitle">{{$content->h18}}</span>
+            <h2 class="title">{{$content->h19}}</h2>
         </div>
         <div class="row">
             <div class="col-lg-6 col-md-6" data-sal="slide-up" data-sal-duration="800" data-sal-delay="100">
@@ -154,8 +191,8 @@
                         <h3 class="sl-number">1</h3>
                     </div>
                     <div class="content">
-                        <h5 class="title"> Plus un geste !</h5>
-                        <p>Ont vient directement chez vous ou votre lieu de travail</p><br><br><br><br>
+                        <h5 class="title">{{$content->h20}}</h5>
+                        <p>{{$content->h21}}</p><br><br><br><br>
                     </div>
                 </div>
             </div>
@@ -165,8 +202,8 @@
                         <h3 class="sl-number">2</h3>
                     </div>
                     <div class="content">
-                        <h5 class="title"> Plus de temps à perdre !</h5>
-                        <p>C'est terminé les délais d'attente interminable pour un rdv, bloquer une demi-journée ou encore faire appel à un ami pour vous récupérer au garage ! <br> Avec Mister Mécano 100% des rdv sont proposés 72h après la demande.</p><br>
+                        <h5 class="title"> {{$content->h22}}</h5>
+                        <p>{{$content->h23}}</p><br>
                     </div>
                 </div>
             </div>
@@ -176,8 +213,8 @@
                         <h3 class="sl-number">3</h3>
                     </div>
                     <div class="content">
-                        <h5 class="title">On s'occupe de tout</h5>
-                        <p>Votre mécanicien vous retrouve chez vous ou sur votre lieu de travail</p><br><br>
+                        <h5 class="title">{{$content->h24}}</h5>
+                        <p>{{$content->h25}}</p><br><br>
                     </div>
                 </div>
             </div>
@@ -187,8 +224,8 @@
                         <h3 class="sl-number">4</h3>
                     </div>
                     <div class="content">
-                        <h5 class="title"> Rien de plus clair !</h5>
-                        <p>Vous êtes maitre de votre budget, vous validez le devis et ne payer que les pièces nécessaire avant l'intervention</p><br>
+                        <h5 class="title">{{$content->h26}}</h5>
+                        <p>{{$content->h27}}</p><br>
                     </div>
                 </div>
             </div>
@@ -205,7 +242,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12" data-sal="slide-up" data-sal-duration="800" data-sal-delay="100">
                 <div class="services-grid service-style-2">
-                    <iframe width="100%" height="500" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                    <iframe width="100%" height="500" src="https://www.youtube.com/embed/{{$content->h28}}">
                     </iframe>
 
                 </div>

@@ -15,7 +15,12 @@ use Illuminate\Support\Facades\Route;
 // Social Auth
 Route::get('/redirect/{provider}', ['uses' => 'Auth\LoginController@redirect', 'as' => 'social.login']);
 Route::get('/callback/{provider}', ['uses' => 'Auth\LoginController@callback', 'as' => 'social.login-callback']);
-Route::post('offer.store', 'Admin\DealController@saveoffer')->name('offer.store');
+Route::post('offer/store', 'Admin\DealController@saveoffer')->name('offer.store');
+Route::get('mycar/index', 'ContentController@index')->name('mycar.index');
+Route::get('single/product/{id}', 'ContentController@singleProduct')->name('single.product');
+Route::get('mycar/add', 'ContentController@addmycar')->name('mycar.add');
+Route::post('store/car', 'ContentController@carstore')->name('car.store');
+Route::post('store/content', 'ContentController@contentStore')->name('content.store');
 
 Auth::routes();
 

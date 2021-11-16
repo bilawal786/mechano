@@ -120,6 +120,13 @@ class ProductsController extends Controller
         $product->discount_type = $request->discount_type;
         $product->discount = $request->discount;
         $product->location_id = $request->location_id;
+        if ($request->hasfile('default_image')) {
+            $image1 = $request->file('default_image');
+            $name = time() . 'allimages' . '.' . $image1->getClientOriginalExtension();
+            $destinationPath = 'allimages/';
+            $image1->move($destinationPath, $name);
+            $product->default_image = 'allimages/' . $name;
+        }
         $product->save();
 
         /* store taxes */

@@ -134,6 +134,16 @@
             </a>
         </li>
         @endif
+        @if($user->is_customer)
+            <li class="nav-item">
+                <a href="{{ route('mycar.index') }}" class="nav-link {{ request()->is('mycar/index*') ? 'active' : '' }}">
+                    <i class="nav-icon icon-car"></i>
+                    <p>
+                        Ma voiture
+                    </p>
+                </a>
+            </li>
+        @endif
 
         @if ($user->is_admin || $user->is_employee)
         <li class="nav-item">

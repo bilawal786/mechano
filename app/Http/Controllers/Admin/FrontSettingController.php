@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Content;
 use App\Helper\Reply;
 use App\FooterSetting;
 use App\CompanySetting;
@@ -28,6 +29,7 @@ class FrontSettingController extends Controller
     public function index()
     {
         abort_if(!$this->user->roles()->withoutGlobalScopes()->first()->hasPermission('manage_settings'), 403);
+        $this->content = Content::find(1);
 
         $this->footerSetting = FooterSetting::first();
         $this->getStartedData = CompanySetting::firstOrFail();

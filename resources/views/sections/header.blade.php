@@ -28,7 +28,9 @@
                         </div>
                         <ul class="mainmenu" >
                             <li><a href="{{route('front.index')}}">Accueil</a></li>
-                            <li><a href="{{route('front.index')}}#voiture">Ma voiture !</a></li>
+                            @auth
+                            <li><a href="{{route('admin.dashboard')}}">Ma voiture !</a></li>
+                            @endauth
                             <li><a href="{{route('front.index')}}#services">Nos Services !</a></li>
                             <li><a href="{{route('front.index')}}#offers">Nos Offres !</a></li>
                             <li><a href="{{route('front.index')}}#rdv">Prendre rdv !</a></li>

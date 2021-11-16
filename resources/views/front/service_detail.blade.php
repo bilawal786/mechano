@@ -1,4 +1,4 @@
-@extends('layouts.frontn')
+@extends('layouts.front')
 
 @section('content')
     <section class="section">
@@ -80,7 +80,7 @@
                             <ul>
                                 <li>
                                     <span>
-                                        @lang('app.service') @lang('app.name')
+                                       Nom du service
                                     </span>
                                     <span>
                                         {{ $service->name }}
@@ -88,7 +88,7 @@
                                 </li>
                                 <li>
                                     <span>
-                                        @lang('app.price')
+                                      Prix
                                     </span>
                                     <span>
                                         {{ currencyFormatter($service->price) }}
@@ -96,7 +96,7 @@
                                 </li>
                                 <li>
                                     <span>
-                                        @lang('app.time')
+                                       Temps
                                     </span>
                                     <span>
                                         {{ $service->time }}  @lang('app.'.$service->time_type)
@@ -104,7 +104,7 @@
                                 </li>
                                 <li>
                                     <span>
-                                       @lang('app.discount')
+                                      Remise
                                     </span>
                                     <span>
                                         @switch($service->discount_type)
@@ -121,7 +121,7 @@
                         </div>
                         <ul class="add-qty">
                             <li>
-                                <span class="text-capitalize mb-2 d-block">@lang('app.add') @lang('app.quantity')</span>
+                                <span class="text-capitalize mb-2 d-block">Ajouter une quantité</span>
                                 <div class="qty-wrap">
                                     <div class="qty-elements">
                                         <a class="decrement_qty" href="javascript:void(0)" onclick="decreaseQuantity(this)">-</a>
@@ -169,7 +169,7 @@
                                                 data-price="{{$service->discounted_price}}"
                                                 data-name="{{ ucwords($service->name) }}"
                                                 aria-expanded="false">
-                                                @lang('front.addItem')
+                                                Ajouter au panier
                                             </a>
                                         </div>
                                     </div>
@@ -182,9 +182,9 @@
                     <div class="col-12 text-right">
                         <div class="navigation mt-4">
                             <a href="{{ route('front.index') }}" class="btn btn-custom btn-dark">
-                                <i class="fa fa-angle-left mr-2"></i>@lang('front.navigation.goBack')
+                                <i class="fa fa-angle-left mr-2"></i>Retourner
                             </a>
-                            <a href="javascript:;" class="btn btn-custom btn-dark" onclick="goToPage('GET', '{{ route('front.bookingPage') }}');">@lang('front.selectBookingTime') <i class="fa fa-angle-right ml-2"></i> </a>
+                            <a href="javascript:;" class="btn btn-custom btn-dark" onclick="goToPage('GET', '{{ route('front.bookingPage') }}');">Sélectionnez l'heure de réservation <i class="fa fa-angle-right ml-2"></i> </a>
                         </div>
                     </div>
                 </div>
