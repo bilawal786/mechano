@@ -250,8 +250,8 @@
         </div>
     </div>
 </section>
-<section class="section section-padding pb--70" id="offers" style="background-color: blue; color: white !important; border-radius: 50px">
-    <div class="container">
+<section class="section section-padding pb--70" id="offers" >
+    <div class="container" style="background-color: blue; color: white !important; border-radius: 50px; padding: 0px 50px">
         <div class="section-heading heading-left">
             <span class="subtitle"></span>
             <h2 class="title" style="color: white">Nos Offres</h2>
