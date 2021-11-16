@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Front;
 
 use App\Address;
+use App\Content;
 use App\Offers;
+use App\Product;
 use App\Tax;
 use App\User;
 use App\Role;
@@ -62,7 +64,9 @@ class FrontController extends Controller
 
     public function index()
     {
+        $products = Product::all();
         $offers = Offers::find(1);
+        $content = Content::find(1);
         session(['sess_location' => request()->location]);
         $location = Location::where('id', request()->location)->first();
         $first_location = Location::first()->id;
@@ -130,7 +134,7 @@ class FrontController extends Controller
             return view('front-new.index', compact('deals', 'categories', 'images', 'section_contents', 'customerFeedbacks'));
         }*/
 
-        return view('front.index', compact('categories', 'images', 'section_contents', 'customerFeedbacks', 'offers'));
+        return view('front.index', compact('categories', 'images', 'section_contents', 'customerFeedbacks', 'offers', 'products', 'content'));
     }
 
     public function addOrUpdateProduct(Request $request)
