@@ -141,7 +141,7 @@
 <section class="section project-column-4">
             <div class="container">
                 <div id="all_services"><div class="section-heading heading-left">
-                        <h2 class="title">Des produits</h2>
+                        <h2 class="title">Nos produits</h2>
                     </div>
                     <div  class="row">
                         @foreach($products as $product)
@@ -149,7 +149,7 @@
                             <div class="project-grid">
                                 <div class="thumbnail">
                                     <a href="">
-                                        <img src="{{asset('user-uploads/product/1/'.$product->default_image)}}" alt="project">
+                                        <img src="{{asset($product->product_image_url)}}" alt="project">
                                     </a>
                                 </div>
                                 <div class="content">
@@ -174,6 +174,29 @@
                 <li class="shape shape-2"><img src="assets-new/media/others/bubble-2.png" alt="Line"></li>
                 <li class="shape shape-3"><img src="assets-new/media/others/bubble-1.png" alt="Line"></li>
             </ul>
+</section>
+
+<section class="section section-padding pb--70" id="offers" >
+    <div class="container" style="background-color: #228fba; color: white !important; border-radius: 50px; padding: 0px 50px">
+        <div class="section-heading heading-left">
+            <span class="subtitle"></span>
+            <h2 class="title" style="color: white">Nos Offres</h2>
+        </div>
+        <div class="row pb-20">
+            <div class="col-md-4">
+                <a href="{{$offers->link}}"><img class="w100 pb-20" src="{{$offers->image}}" alt=""></a>
+            </div>
+            <div class="col-md-8" style="text-align: center">
+                <h3 style="color: white">{{$offers->title}}</h3><br>
+                <h3 style="color: white">-{{$offers->discount}}%</h3><br>
+                <div class="countdown-wrap pb-20">
+                    <p style="text-align: center;
+  font-size: 60px;
+  margin-top: 0px;" id="demotime"></p>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 <!--=====================================-->
 <!--=       Service  Area Start        =-->
@@ -250,28 +273,6 @@
         </div>
     </div>
 </section>
-<section class="section section-padding pb--70" id="offers" >
-    <div class="container" style="background-color: #228fba; color: white !important; border-radius: 50px; padding: 0px 50px">
-        <div class="section-heading heading-left">
-            <span class="subtitle"></span>
-            <h2 class="title" style="color: white">Nos Offres</h2>
-        </div>
-        <div class="row pb-20">
-            <div class="col-md-4">
-                <a href="{{$offers->link}}"><img class="w100 pb-20" src="{{$offers->image}}" alt=""></a>
-            </div>
-            <div class="col-md-8" style="text-align: center">
-                <h3 style="color: white">{{$offers->title}}</h3><br>
-                <h3 style="color: white">-{{$offers->discount}}%</h3><br>
-                    <div class="countdown-wrap pb-20">
-                        <p style="text-align: center;
-  font-size: 60px;
-  margin-top: 0px;" id="demotime"></p>
-                    </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 
 @endsection
@@ -298,8 +299,8 @@
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             // Output the result in an element with id="demo"
-            document.getElementById("demotime").innerHTML = days + "d " + hours + "h "
-                + minutes + "m " + seconds + "s ";
+            document.getElementById("demotime").innerHTML = days + "jrs  " + hours + "h  "
+                + minutes + "m  " + seconds + "s  ";
 
             // If the count down is over, write some text
             if (distance < 0) {

@@ -88,6 +88,11 @@
         </div>
     </div>
 @endif
+    <div class="row">
+        <div class="col-md-12">
+            <p>Je n'ai pas de compte <a href="{{route('register')}}">Inscrivez-vous ici</a></p>
+        </div>
+    </div>
 <!-- /.social-auth-links -->
 @endsection
 

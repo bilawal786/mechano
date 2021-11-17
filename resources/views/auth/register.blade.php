@@ -1,77 +1,98 @@
 @extends('layouts.auth')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+    <span class="logo-box">
+        <img src="{{ $frontThemeSettings->logo_url }}" alt="logo">
+    </span>
+    <h4 class="mb-30">S'inscrire au compte</h4>
+    <form action="{{ route('manual.register') }}" method="post">
+        @csrf
+        @if ($googleCaptchaSettings->status == 'active')
+            <input type="hidden" name="recaptcha" id="recaptcha">
+        @endif
+        <div class="input-group">
+            <i class="fa fa-envelope"></i>
+            <input type="text" name="name" id="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" required autofocus>
+            <label for="email">Nom</label>
+        </div>
+        <div class="input-group">
+            <i class="fa fa-envelope"></i>
+            <input type="email" name="email" id="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" required autofocus>
+            <label for="email">@lang('app.email')</label>
+            @if ($errors->has('email'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('email') }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="input-group">
+            <i class="fa fa-lock"></i>
+            <input type="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+            <label for="password">Mot de passe</label>
+            @if ($errors->has('password'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('password') }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="input-group">
+            <i class="fa fa-lock"></i>
+            <input type="password"  class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="confirm_password" required>
+            <label for="password">Confirmez le mot de passe</label>
+            @if ($errors->has('password'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('confirm_password') }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="centering v-center">
+            <span class="mb-4">
+                <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                <label for="remember">Souviens-toi de moi</label>
+            </span>
+            <span class="mb-4">
+                <a href="{{ route('password.request') }}" class="c-theme"> Mot de passe oublié?</a>
+            </span>
+        </div>
+        @if ($googleCaptchaSettings->v2_status == 'active' && $googleCaptchaSettings->status == 'active')
+            <div class="centering v-center mb-3">
+                <div id="captcha_container"></div>
+            </div>
+        @endif
+        @if ($errors->has('recaptcha'))
+            <span class="invalid-feedback text-left mb-3" role="alert">
+                <strong>{{ $errors->first('recaptcha') }}</strong>
+            </span>
+        @endif
+        <div class="d-flex justify-content-between flex-wrap">
+            <button type="submit" class="btn btn-custom btn-blue px-4">S'inscrire</button>
+            <a href="{{ route('front.index') }}" class="btn btn-light btn-sm">Refour sur le site web</a>
+        </div>
+    </form>
+    <!-- /.social-auth-links -->
+    @if($socialAuthSettings->google_status == 'active' || $socialAuthSettings->facebook_status == 'active')
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
+                <div class="social mt-4 d-flex">
+                    <span>@lang('front.or') @lang('app.signIn') @lang('app.using') :</span>
+                    @if($socialAuthSettings->facebook_status == 'active')
+                        <a href="{{ route('social.login', 'facebook') }}" class="btn btn-facebook btn-primary mr-1 px-3" data-toggle="tooltip" title="{{__('app.signIn')}} {{__('app.using')}} {{__('app.facebook')}}" onclick="window.location.href = facebook;" data-original-title="{{__('app.signIn')}} {{__('app.using')}} {{__('app.facebook')}}">
+                            <i aria-hidden="true" class="fa fa-facebook"></i>
+                        </a>
+                    @endif
+                    @if($socialAuthSettings->google_status == 'active')
+                        <a href="{{ route('social.login', 'google') }}" class="btn btn-google btn-danger ml-1" data-toggle="tooltip" title="{{__('app.signIn')}} {{__('app.using')}} {{__('app.google')}}" onclick="window.location.href = google;" data-original-title="{{__('app.signIn')}} {{__('app.using')}} {{__('app.google')}}">
+                            <i aria-hidden="true" class="fa fa-google"></i>
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>
+    @endif
+    <div class="row">
+        <div class="col-md-12">
+            <p>Vous avez déjà un compte <a href="{{route('login')}}">Connectez-vous ici</a></p>
+        </div>
     </div>
-</div>
+    <!-- /.social-auth-links -->
 @endsection

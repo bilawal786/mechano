@@ -25,6 +25,9 @@
             }
 
             {!! $frontThemeSettings->custom_css !!}
+            .logo-login .logo-box {
+                background-color: #fff;
+            }
         </style>
     </head>
     <body class="login-body-wrapper">

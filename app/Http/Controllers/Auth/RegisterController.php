@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Froiden\Envato\Traits\AppBoot;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -21,14 +22,14 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    use RegistersUsers, AppBoot;
 
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/account/dashboard';
 
     /**
      * Create a new controller instance.
@@ -37,7 +38,9 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        die;
+        parent::__construct();
+        view()->share('pageTitle', __('email.loginAccount'));
+        $this->middleware('guest')->except('logout');
     }
 
     /**

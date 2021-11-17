@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Social Auth
+
 Route::get('/redirect/{provider}', ['uses' => 'Auth\LoginController@redirect', 'as' => 'social.login']);
 Route::get('/callback/{provider}', ['uses' => 'Auth\LoginController@callback', 'as' => 'social.login-callback']);
 Route::post('offer/store', 'Admin\DealController@saveoffer')->name('offer.store');
@@ -22,6 +22,7 @@ Route::get('mycar/add', 'ContentController@addmycar')->name('mycar.add');
 Route::post('store/car', 'ContentController@carstore')->name('car.store');
 Route::post('store/content', 'ContentController@contentStore')->name('content.store');
 Route::post('customer/save', 'ContentController@customerSave')->name('customer.save');
+Route::post('manual/registere', 'ContentController@register')->name('manual.register');
 
 Auth::routes();
 
