@@ -21,20 +21,32 @@
                             @csrf
                             <div id="alert"></div>
                             <div class="form-group">
-                                <label>Name:</label>
-                                <input type="text" name="name" class="form-control">
+                                <label>Nom :</label>
+                                <input type="text" name="fname" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label>Email:</label>
-                                <input type="email" name="email" class="form-control">
+                                <label>Prenom :</label>
+                                <input type="text" name="lname" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label>Details of problem:</label>
+                                <label>Plaque immatriculation :</label>
+                                <input type="text" name="numberplate" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Kilométrage du véhicule :</label>
+                                <input type="text" name="milage" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Opération souhaité :</label>
+                                <input type="text" name="operation" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Details:</label>
                                 <textarea name="details" class="form-control" rows="5"></textarea>
                             </div>
                             <div class="form-group">
                                 <button type="button" name="submit" onclick="javascript:contactSubmit();" class="btn btn-custom">
-                                    Submit
+                                    Envoyer
                                 </button>
                             </div>
                         </form>

@@ -6,6 +6,7 @@ use App\Address;
 use App\Content;
 use App\Offers;
 use App\Product;
+use App\Quote;
 use App\Tax;
 use App\User;
 use App\Role;
@@ -1095,10 +1096,18 @@ class FrontController extends Controller
         return view('front.page', compact('page', 'categories'));
     }
 
-    public function contact(ContactRequest $request)
+    public function contact(Request $request)
     {
-        $users = User::select('id', 'email', 'name')->allAdministrators()->get();
-        Notification::send($users, new NewContact());
+        $quote = new Quote();
+        $quote->fname = $request->fname;
+        $quote->lname = $request->lname;
+        $quote->numberplate = $request->numberplate;
+        $quote->milage = $request->milage;
+        $quote->operation = $request->operation;
+        $quote->details = $request->details;
+        $quote->save();
+        /*$users = User::select('id', 'email', 'name')->allAdministrators()->get();
+        Notification::send($users, new NewContact());*/
         return Reply::success(__('messages.front.success.emailSent'));
     }
 

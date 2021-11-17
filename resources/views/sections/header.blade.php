@@ -1,6 +1,10 @@
 <!--=====================================-->
 <!--=        Header Area Start       	=-->
 <!--=====================================-->
+<div class="topnav" id="myDIV">
+    <a class="active" href="#home">Jusqu'au 21/12 Cyclofix offre 5€ sur les interventions qui concernent vos freins. Pensez à ajouter le code promo FREIN5 lors de la demande ! </a>
+    <a onclick="myFunction()" style="float: right" class="active" > X</a>
+</div>
 <header class="header axil-header header-style-2">
     <div id="axil-sticky-placeholder"></div>
     <div class="axil-mainmenu">
@@ -34,7 +38,7 @@
                             <li><a href="{{route('front.index')}}#services">Nos Services !</a></li>
                             <li><a href="{{route('front.index')}}#offers">Nos Offres !</a></li>
                             <li><a href="{{route('front.index')}}#rdv">Prendre rdv !</a></li>
-                            <li><a href="{{url('contact')}}">Contact</a></li>
+                            <li><a href="{{url('contact')}}">Devis</a></li>
                         </ul>
                     </nav>
                     <!-- End Mainmanu Nav -->
@@ -320,5 +324,15 @@
             })
         });
 
+</script>
+<script>
+    function myFunction() {
+        var x = document.getElementById("myDIV");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
 </script>
 @endpush
