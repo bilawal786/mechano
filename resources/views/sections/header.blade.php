@@ -35,9 +35,9 @@
                             @auth
                             <li><a href="{{route('admin.dashboard')}}">Ma voiture !</a></li>
                             @endauth
-                            <li><a href="{{route('front.index')}}#services">Nos Services !</a></li>
-                            <li><a href="{{route('front.index')}}#offers">Nos Offres !</a></li>
-                            <li><a href="{{route('front.index')}}#rdv">Prendre rdv !</a></li>
+                            <li><a href="{{route('front.index')}}#services-sec">Nos Services !</a></li>
+                            <li><a href="{{route('front.index')}}#offers-sec">Nos Offres !</a></li>
+                            <li><a href="{{route('front.index')}}#services-sec">Prendre rdv !</a></li>
                             <li><a href="{{url('contact')}}">Devis</a></li>
                         </ul>
                     </nav>

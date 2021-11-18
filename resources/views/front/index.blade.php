@@ -128,7 +128,7 @@
 <!--=====================================-->
 <!--=     Call To Action Area Start     =-->
 <!--=====================================-->
-<section class="section project-column-4">
+<section class="section project-column-4" id="services-sec">
             <div class="container">
                   <div id="all_services"></div>
             </div>
@@ -175,8 +175,8 @@
                 <li class="shape shape-3"><img src="assets-new/media/others/bubble-1.png" alt="Line"></li>
             </ul>
 </section>
-
-<section class="section section-padding pb--70" id="offers" >
+<div id="offers-sec"></div>
+<section class="section section-padding pb--70">
     <div class="container" style="background-color: #228fba; color: white !important; border-radius: 50px; padding: 0px 50px">
         <div class="section-heading heading-left">
             <span class="subtitle"></span>
