@@ -75,42 +75,7 @@
             weekStart: 0,
             format: "yyyy-mm-dd"
         });
-        ( function( factory ) {
-            if ( typeof define === "function" && define.amd ) {
 
-                // AMD. Register as an anonymous module.
-                define( [ "../widgets/datepicker" ], factory );
-            } else {
-
-                // Browser globals
-                factory( jQuery.datepicker );
-            }
-        }( function( datepicker ) {
-
-            datepicker.regional.fr = {
-                closeText: "Fermer",
-                prevText: "",
-                nextText: "",
-                currentText: "Aujourd'hui",
-                monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
-                    "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
-                monthNamesShort: [ "janv.", "févr.", "mars", "avr.", "mai", "juin",
-                    "juil.", "août", "sept.", "oct.", "nov.", "déc." ],
-                dayNames: [ "dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi" ],
-                dayNamesShort: [ "dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam." ],
-                dayNamesMin: [ "Di","Lu","Ma","Me","Je","Ve","Sa" ],
-                weekHeader: "Sem.",
-                dateFormat: "mm/dd/yy",
-                firstDay: 1,
-                isRTL: false,
-                showMonthAfterYear: false,
-                minDate: new Date(),
-                yearSuffix: "" };
-            datepicker.setDefaults( datepicker.regional.fr );
-
-            return datepicker.regional.fr;
-
-        } ) );
 
 
         var bookingDetails = {_token: $("meta[name='csrf-token']").attr('content')};
