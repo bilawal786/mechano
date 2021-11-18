@@ -43,9 +43,9 @@
 
 </div>
 
-@if ($services->count() > 0)
-  <div class="more-project-btn">
-      <a href="javascript:;" onclick="goToPage('GET', '{{ route('front.bookingPage') }}')" class="axil-btn btn-fill-primary">Prendre votre rendez-vous
-      <i class="fa fa-angle-right ml-1"></i></a>
-    </div>
-@endif
+{{--@if ($services->count() > 0)--}}
+{{--  <div class="more-project-btn">--}}
+{{--      <a href="javascript:;" onclick="goToPage('GET', '{{ route('front.bookingPage') }}')" class="axil-btn btn-fill-primary">Prendre votre rendez-vous--}}
+{{--      <i class="fa fa-angle-right ml-1"></i></a>--}}
+{{--    </div>--}}
+{{--@endif--}}
