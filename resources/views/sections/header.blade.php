@@ -1,8 +1,12 @@
 <!--=====================================-->
 <!--=        Header Area Start       	=-->
 <!--=====================================-->
+<?php
+$content = \App\Content::find(1);
+
+?>
 <div class="topnav" id="myDIV">
-    <a class="active" href="#home">Jusqu'au 21/12 Cyclofix offre 5€ sur les interventions qui concernent vos freins. Pensez à ajouter le code promo FREIN5 lors de la demande ! </a>
+    <a class="active" href="#home">{{$content->h29}} </a>
     <a onclick="myFunction()" style="float: right" class="active" > X</a>
 </div>
 <header class="header axil-header header-style-2">

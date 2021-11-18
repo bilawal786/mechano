@@ -43,6 +43,7 @@ class CreateContentsTable extends Migration
             $table->longText('h26');
             $table->longText('h27');
             $table->longText('h28');
+            $table->longText('h29');
             $table->timestamps();
         });
     }

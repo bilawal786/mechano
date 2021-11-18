@@ -12,7 +12,7 @@
                 <div class="col-12">
                     <div class="all-title">
                         <h3 class="sec-title">
-                            @lang('front.selectBookingTime')
+                            Sélectionnez l'heure de réservation
                         </h3>
                     </div>
                 </div>
@@ -37,8 +37,8 @@
             <div class="row mt-30">
                 <div class="col-12">
                     <div class="navigation">
-                        <a href="{{ route('front.index') }}" class="btn btn-custom btn-dark"><i class="fa fa-angle-left mr-2"></i>@lang('front.navigation.goBack')</a>
-                        <a id="nextBtn" href="javascript:;" onclick="addBookingDetails()" class="btn btn-custom btn-dark">@lang('front.next') <i class="fa fa-angle-right ml-1"></i> </a>
+                        <a href="{{ route('front.index') }}" class="btn btn-custom btn-dark"><i class="fa fa-angle-left mr-2"></i>Arrière</a>
+                        <a id="nextBtn" href="javascript:;" onclick="addBookingDetails()" class="btn btn-custom btn-dark">Prochain <i class="fa fa-angle-right ml-1"></i> </a>
                     </div>
                 </div>
             </div>

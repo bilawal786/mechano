@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->float('discount');
             $table->enum('discount_type', ['percent', 'fixed']);
             $table->string('image')->nullable();
+            $table->string('quantity')->nullable();
             $table->string('default_image')->nullable();
             $table->enum('status', ['active', 'deactive'])->default('active');
             $table->timestamps();

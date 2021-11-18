@@ -19,7 +19,7 @@
                             <ul>
                                 <li>
                                     <span>
-                                       Nom du service
+                                       Nom du Produit
                                     </span>
                                     <span>
                                         {{ $product->name }}
@@ -31,6 +31,14 @@
                                     </span>
                                     <span>
                                         {{ currencyFormatter($product->price) }}
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>
+                                      Quantité
+                                    </span>
+                                    <span>
+                                        {{$product->quantity}}
                                     </span>
                                 </li>
                                 <li>

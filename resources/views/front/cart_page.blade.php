@@ -37,7 +37,7 @@
                     <div class="col-12">
                         <div class="all-title">
                             <h3 class="sec-title">
-                                @lang('front.headings.bookingDetails')
+                                Les détails de réservation
                             </h3>
                         </div>
                     </div>
@@ -48,13 +48,13 @@
                             <table class="table table-responsive-md">
                                 <thead>
                                 <tr>
-                                    <th>@lang('front.table.headings.serviceName')</th>
-                                    <th>@lang('front.table.headings.unitPrice')</th>
-                                    <th>@lang('front.table.headings.quantity')</th>
+                                    <th>Nom</th>
+                                    <th>Prix</th>
+                                    <th>Quantité</th>
                                     @if(!is_null($taxes))
                                     <th>@lang('app.tax')</th>
                                     @endif
-                                    <th>@lang('front.table.headings.subTotal')</th>
+                                    <th>Total</th>
                                     @if (!is_null($products))
                                         <th>&nbsp;</th>
                                     @endif
@@ -143,9 +143,9 @@
                                             <li>
                                             </li>
                                             <li>
-                                                <a href="{{ route('front.index') }}" class="btn btn-custom btn-blue">@lang('front.buttons.continueBooking')</a>
+                                                <a href="{{ route('front.index') }}" class="btn btn-custom btn-blue">Continuer la réservation</a>
                                                 @if (!is_null($products))
-                                                    <a href="javascript:;" onclick="deleteProduct(this, 'all')" class="btn btn-custom btn-blue">@lang('front.buttons.clearCart')</a>
+                                                    <a href="javascript:;" onclick="deleteProduct(this, 'all')" class="btn btn-custom btn-blue">Vider le panier</a>
                                                 @endif
                                             </li>
                                         </ul>
@@ -158,16 +158,16 @@
                     <div class="col-lg-4 col-12 mb-30">
                         <div class="cart-block">
                             <div class="final-cart">
-                                <h5>@lang('front.summary.cart.heading.cartTotal')</h5>
+                                <h5>Panier Total</h5>
 
                                 @if ($type == 'booking')
                                     <div class="mx-3">
                                         <div class="input-group" id="applyCouponBox"
                                             @if(is_null($couponData))
                                                 style="border-radius: 4px;overflow: hidden;" @else style="display: none" @endif >
-                                            <input type="text" name="coupon"class="form-control" placeholder="@lang('front.summary.cart.applyCoupon')" id="coupon" style="border: 0;">
+                                            <input type="text" name="coupon"class="form-control" placeholder="Coupon" id="coupon" style="border: 0;">
                                             <div class="input-group-prepend">
-                                                <button id="" onclick="applyCoupon();" type="button" class="btn btn-sm input-group-text" style="font-size:13px; border:0; color:#000">@lang('front.summary.cart.applyCoupon')</button>
+                                                <button id="" onclick="applyCoupon();" type="button" class="btn btn-sm input-group-text" style="font-size:13px; border:0; color:#000">Appliquer Coupon</button>
                                             </div>
                                         </div>
                                     </div>
@@ -244,14 +244,14 @@
                     <div class="row">
                         <div class="col-12 text-right">
                             <div class="navigation">
-                                <a href="{{ route('front.bookingPage') }}" class="btn btn-custom btn-dark"><i class="fa fa-angle-left mr-2"></i>@lang('front.navigation.goBack')</a>
+                                <a href="{{ route('front.bookingPage') }}" class="btn btn-custom btn-dark"><i class="fa fa-angle-left mr-2"></i>Retourner</a>
                                 @if ($type == 'deal')
                                     <a href="{{ route('front.checkoutPage') }}" class="btn btn-custom btn-dark">
-                                        @lang('front.navigation.toCheckout')<i class="fa fa-angle-right ml-1"></i>
+                                        Sélectionnez l'heure de réservation<i class="fa fa-angle-right ml-1"></i>
                                     </a>
                                 @else
                                     <a href="{{ route('front.checkoutPage') }}" class="btn btn-custom btn-dark">
-                                        {{ !is_null($bookingDetails) ? __('front.navigation.toCheckout') : __('front.selectBookingTime') }}
+                                        {{ !is_null($bookingDetails) ? __('Sélectionnez l\'heure de réservation') : __('Sélectionnez l\'heure de réservation') }}
                                         <i class="fa fa-angle-right ml-1"></i>
                                     </a>
                                 @endif

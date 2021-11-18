@@ -69,6 +69,7 @@
                 aria-orientation="vertical">
                 <a class="nav-link active" href="#profile_page" id="profile-tab" data-toggle="tab">@lang('menu.profile') @lang('menu.settings')</a>
                 @permission('manage_settings')
+                    <a class="nav-link" href="#quotes" data-toggle="tab" id="general-tab"> Devis</a>
                     <a class="nav-link" href="#general" data-toggle="tab" id="general-tab">@lang('menu.general') @lang('menu.settings')</a>
                     <a class="nav-link" href="#times" data-toggle="tab">@lang('menu.bookingSettings')</a>
                     <a class="nav-link" href="#tax" data-toggle="tab">@lang('app.tax') @lang('menu.settings')</a>
@@ -112,6 +113,36 @@
                                 </div>
 
                                 @permission('manage_settings')
+                                    <div class="tab-pane" id="quotes">
+
+                                        <div class="table-responsive">
+                                            <table class="table table-condensed">
+                                                <tr>
+                                                    <th style="width: 10px">#</th>
+                                                    <th>Nom</th>
+                                                    <th>Prenom</th>
+                                                    <th>Plaque immatriculation</th>
+                                                    <th>Kilométrage du véhicule</th>
+                                                    <th>Opération souhaité</th>
+                                                    <th>Details</th>
+                                                    <th>Daté</th>
+                                                </tr>
+                                                @foreach($quotes as $quote)
+                                                    <tr>
+                                                        <td>{{ $quote->id }}</td>
+                                                        <td>{{ $quote->fname }}</td>
+                                                        <td>{{ $quote->lname }}</td>
+                                                        <td>{{ $quote->numberplate }}</td>
+                                                        <td>{{ $quote->milage }}</td>
+                                                        <td>{{ $quote->operation }}</td>
+                                                        <td>{{ $quote->details }}</td>
+                                                        <td>{{ $quote->created_at }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            </table>
+                                        </div>
+
+                                    </div>
                                     <div class="tab-pane" id="general">
 
                                         <form class="form-horizontal ajax-form" id="general-form" method="POST">
@@ -882,7 +913,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+
                                             </form>
                                         </section>
                                         <hr>
@@ -1296,7 +1327,7 @@
             $('#msg91_status').is(':checked') ? $('#msg91-credentials').show() : $('#msg91-credentials').hide();
             $('#google_status').is(':checked') ? $('#google-credentials').show() : $('#google-credentials').hide();
             $('#facebook_status').is(':checked') ? $('#facebook-credentials').show() : $('#facebook-credentials').hide();
-    
+
             $('#v-pills-tab a').click(function (e) {
                 e.preventDefault();
                 $(this).tab('show');

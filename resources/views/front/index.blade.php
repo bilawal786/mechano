@@ -154,7 +154,8 @@
                                 </div>
                                 <div class="content">
                                     <h5 class="title"><a href="{{route('single.product', ['id' => $product->id])}}">{{$product->name}}</a></h5>
-                                    <span class="subtitle">Prix: {{$product->price}}€</span>
+                                    <span class="subtitle">Prix: {{$product->price}}€</span><br>
+                                    <span class="subtitle">Quantité: {{$product->quantity}}</span>
                                     <div class="dropdown add-items">
                                         <a id="service1" href="javascript:;" class="btn-custom btn-blue add-to-cart" data-type="product" data-unique-id="{{$product->id}}" data-id="{{$product->id}}" data-price="{{$product->price}}" data-name="{{$product->name}}" aria-expanded="false">
                                             Ajouter au panier

@@ -116,7 +116,12 @@
                                     </div>
                                 </div>
                             @endif
-
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Quantité</label>
+                                    <input type="number" class="form-control" value="{{$product->quantity}}" name="quantity">
+                                </div>
+                            </div>
                             <div class="col-md-12">
                                 <button type="button" class="btn btn-block btn-outline-info btn-sm col-md-2 select-image-button" style="margin-bottom: 10px;display: none "><i class="fa fa-upload"></i> File Select Or Upload</button>
                                 <div id="file-upload-box" >

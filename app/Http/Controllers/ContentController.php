@@ -70,6 +70,7 @@ class ContentController extends Controller
         $content->h26 = $request->h26;
         $content->h27 = $request->h27;
         $content->h28 = $request->h28;
+        $content->h29 = $request->h29;
         $content->update();
         return redirect()->back();
     }

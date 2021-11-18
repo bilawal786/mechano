@@ -169,6 +169,12 @@
                 <input type="text" class="form-control form-control-lg" name="h28" value="{{$content->h28}}">
             </div>
         </div>
+        <div class="col-md-12">
+            <h6 class="col-md-6 text-primary">Texte de la bannière</h6>
+            <div class="form-group">
+                <input type="text" class="form-control form-control-lg" name="h29" value="{{$content->h29}}">
+            </div>
+        </div>
         <div class="col-md-6">
             <div class="form-group">
                 <input type="submit" class="btn btn-primary"  value="Sauvegarder">

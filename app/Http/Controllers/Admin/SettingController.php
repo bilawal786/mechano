@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Quote;
 use App\Role;
 use App\Media;
 use App\Module;
@@ -81,6 +82,7 @@ class SettingController extends Controller
         $this->officeLeaves = OfficeLeave::all();
         $this->companyBookingNotifaction = BookingNotifaction::all();
         $this->currency_settings_formats = CurrencyFormatSetting::first();
+        $this->quotes = Quote::all();
 
         return view('admin.settings.index', $this->data);
     }

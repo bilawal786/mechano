@@ -119,6 +119,7 @@ class ProductsController extends Controller
         $product->discount = $request->discount;
         $product->discount_type = $request->discount_type;
         $product->discount = $request->discount;
+        $product->quantity = $request->quantity;
         $product->location_id = $request->location_id;
         if ($request->hasfile('default_image')) {
             $image1 = $request->file('default_image');
@@ -221,6 +222,7 @@ class ProductsController extends Controller
         $product->discount = $request->discount;
         $product->discount_type = $request->discount_type;
         $product->location_id = $request->location_id;
+        $product->quantity = $request->quantity;
         $product->status = $request->status;
         $product->save();
 
