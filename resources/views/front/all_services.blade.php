@@ -1,6 +1,6 @@
 <div class="section-heading heading-left">
     <span class="subtitle">Faite votre choix</span>
-    <h2 class="title">@lang('front.services')</h2>
+    <h2 class="title">Nos Services</h2>
 </div>
 <div id="services" class="row">
     @forelse ($services as $service)
